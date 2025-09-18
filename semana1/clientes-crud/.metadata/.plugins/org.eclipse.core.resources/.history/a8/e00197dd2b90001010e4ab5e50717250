@@ -1,0 +1,62 @@
+package com.banco.clientes.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.banco.clientes.model.Client;
+import com.banco.clientes.repository.ClienteRepository;
+
+@Service
+public class ClientService {
+	
+	@Autowired
+	private ClienteRepository clienteRepository;//instanciamos un ClienteRepository
+	
+	//Metodos CRUD
+	public Client addNewClient(Client client) {
+		return clienteRepository.save(client);
+	}
+	
+	public List<Client> showAllClients(){
+		return clienteRepository.findAll();
+	}
+	
+	public Optional<Client> findClientById(String id){
+		return clienteRepository.findById(id);
+	}
+	
+	public Optional<Client> findClientByLastName(String lastname){
+		return clienteRepository.findByLastName(lastname);
+	}
+	
+	public Optional<Client> findClientByName(String name){
+		return clienteRepository.findByName(name);
+	}
+	
+	public Optional<Client> findClientByTel(String tel){
+		return clienteRepository.findByTel(tel);
+	}
+	
+	public Optional<Client> findClientByCel(String cel){
+		return clienteRepository.findByCel(cel);
+	}
+	
+	//updates
+	public Client
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}

@@ -1,0 +1,17 @@
+package com.banco.clientes.repository;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import com.banco.clientes.model.Tarjeta;
+
+@Repository
+public interface TarjetaRepository extends MongoRepository<Tarjeta, String>{
+
+	List<Tarjeta> findByClienteId(String clienteId);
+	List<Tarjeta> findByTipo(String tipo);
+	List<Tarjeta> findByEstado(String estado);
+	
+}

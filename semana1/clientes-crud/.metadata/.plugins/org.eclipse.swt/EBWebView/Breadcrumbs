@@ -1,0 +1,118 @@
+5:01:13 Microsoft.NewBrowser_Popup
+5:01:13 Microsoft.BrowserList.AddBrowser
+5:01:13 Browser57 Insert active Tab57 at 0
+5:01:13 Tab57 StartNav511 #auto_toplevel
+5:01:13 Tab57 StartNav512 #typed
+5:01:13 Tab57 FinishNav511
+5:01:13 Tab57 PageLoad
+5:01:13 Tab57 FinishNav512
+5:01:13 Tab57 PageLoad
+5:01:14 Tab57 StartNav513 #typed
+5:01:14 Tab57 FinishNav513
+5:01:14 Tab57 PageLoad
+5:01:15 Tab57 StartNav514 #typed
+5:01:15 Tab57 FinishNav514
+5:01:15 Tab57 PageLoad
+5:01:23 Tab56 StartNav515 #typed
+5:01:23 Tab56 FinishNav515
+5:01:23 Tab56 PageLoad
+5:01:33 Tab56 StartNav516 #typed
+5:01:33 Tab56 FinishNav516
+5:01:33 Tab56 PageLoad
+5:01:34 Tab56 StartNav517 #typed
+5:01:34 Tab56 FinishNav517
+5:01:34 Tab56 PageLoad
+5:01:36 Tab1 StartNav518 #typed
+5:01:36 Tab1 FinishNav518
+5:01:36 Tab1 PageLoad
+5:01:39 Tab56 StartNav519 #typed
+5:01:39 Tab56 FinishNav519
+5:01:39 Tab56 PageLoad
+5:01:41 Tab56 StartNav520 #typed
+5:01:41 Tab56 FinishNav520
+5:01:41 Tab56 PageLoad
+5:01:43 Tab56 StartNav521 #typed
+5:01:43 Tab56 FinishNav521
+5:01:43 Tab56 PageLoad
+5:02:39 Tab56 StartNav522 #typed
+5:02:39 Tab56 FinishNav522
+5:02:39 Tab56 PageLoad
+5:02:47 Tab57 StartNav523 #typed
+5:02:47 Tab57 FinishNav523
+5:02:47 Tab57 PageLoad
+5:04:52 Tab56 StartNav524 #typed
+5:04:52 Tab56 FinishNav524
+5:04:52 Tab56 PageLoad
+5:04:58 Tab56 StartNav525 #typed
+5:04:58 Tab56 FinishNav525
+5:04:58 Tab56 PageLoad
+5:05:42 Tab1 StartNav526 #typed
+5:05:42 Tab1 FinishNav526
+5:05:42 Tab1 PageLoad
+5:28:47 Tab57 StartNav527 #typed
+5:28:48 Tab57 FinishNav527
+5:28:48 Tab57 PageLoad
+5:28:54 Tab57 StartNav528 #typed
+5:28:54 Tab57 FinishNav528
+5:28:54 Tab57 PageLoad
+5:29:09 Tab57 StartNav529 #typed
+5:29:09 Tab57 FinishNav529
+5:29:09 Tab57 PageLoad
+5:29:27 Tab57 StartNav530 #typed
+5:29:27 Tab57 FinishNav530
+5:29:27 Tab57 PageLoad
+5:34:34 Tab57 StartNav531 #typed
+5:34:34 Tab57 FinishNav531
+5:34:34 Tab57 PageLoad
+5:34:35 Tab57 StartNav532 #typed
+5:34:35 Tab57 FinishNav532
+5:34:35 Tab57 PageLoad
+5:34:35 Tab57 StartNav533 #typed
+5:34:35 Tab57 FinishNav533
+5:34:35 Tab57 PageLoad
+5:35:05 Tab1 StartNav534 #typed
+5:35:05 Tab1 FinishNav534
+5:35:05 Tab1 PageLoad
+5:36:31 Microsoft.NewBrowser_Popup
+5:36:31 Microsoft.BrowserList.AddBrowser
+5:36:31 Browser58 Insert active Tab58 at 0
+5:36:31 Tab58 StartNav535 #auto_toplevel
+5:36:31 Tab58 StartNav536 #typed
+5:36:31 Tab58 FinishNav535
+5:36:31 Tab58 PageLoad
+5:36:31 Tab58 FinishNav536
+5:36:31 Tab58 PageLoad
+5:36:32 Microsoft.NewBrowser_Popup
+5:36:32 Microsoft.BrowserList.AddBrowser
+5:36:32 Browser59 Insert active Tab59 at 0
+5:36:32 Tab59 StartNav537 #auto_toplevel
+5:36:32 Tab59 StartNav538 #typed
+5:36:32 Tab59 FinishNav537
+5:36:32 Tab59 PageLoad
+5:36:32 Tab59 FinishNav538
+5:36:32 Tab59 PageLoad
+5:36:32 Tab58 StartNav539 #typed
+5:36:32 Tab58 FinishNav539
+5:36:32 Tab58 PageLoad
+5:36:32 Tab59 StartNav540 #typed
+5:36:32 Tab59 FinishNav540
+5:36:32 Tab59 PageLoad
+5:36:32 Tab58 StartNav541 #typed
+5:36:32 Tab58 FinishNav541
+5:36:32 Tab58 PageLoad
+5:36:35 Tab58 StartNav542 #typed
+5:36:35 Tab58 FinishNav542
+5:36:35 Tab58 PageLoad
+5:36:45 Tab58 StartNav543 #typed
+5:36:45 Tab58 FinishNav543
+5:36:45 Tab58 PageLoad
+5:36:47 Tab58 StartNav544 #typed
+5:36:47 Tab58 FinishNav544
+5:36:47 Tab58 PageLoad
+5:36:49 Tab58 StartNav545 #typed
+5:36:49 Tab58 FinishNav545
+5:36:49 Tab58 PageLoad
+5:37:26 Tab58 StartNav546 #typed
+5:37:26 Tab58 FinishNav546
+5:37:26 Tab58 PageLoad
+5:54:03 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp

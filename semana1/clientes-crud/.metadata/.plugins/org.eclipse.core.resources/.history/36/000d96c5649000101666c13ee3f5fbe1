@@ -1,0 +1,107 @@
+package com.banco.clientes.model;
+
+import java.time.LocalDate;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "tarjetas")
+public class Card {
+	
+	@Id
+	private String id;
+	
+	//propiedades de tarjeta
+	private String clienteId;
+	private String numeroTarjeta;
+	private String tipo;
+	private LocalDate fechaEmision;
+	private LocalDate fechaVencimiento;
+	private Double limiteCredito;
+	private String estado;
+	
+	//constructores
+	public Card() {}
+
+	public Card(String clienteId, String numeroTarjeta, String tipo, LocalDate fechaEmision,
+			LocalDate fechaVencimiento, Double limiteCredito, String estado) {
+		
+		this.clienteId = clienteId;
+		this.numeroTarjeta = numeroTarjeta;
+		this.tipo = tipo;
+		this.fechaEmision = fechaEmision;
+		this.fechaVencimiento = fechaVencimiento;
+		this.limiteCredito = limiteCredito;
+		this.estado = estado;
+	}
+
+	//getters y setters
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getClienteId() {
+		return clienteId;
+	}
+
+	public void setClienteId(String clienteId) {
+		this.clienteId = clienteId;
+	}
+
+	public String getNumeroTarjeta() {
+		return numeroTarjeta;
+	}
+
+	public void setNumeroTarjeta(String numeroTarjeta) {
+		this.numeroTarjeta = numeroTarjeta;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public LocalDate getFechaEmision() {
+		return fechaEmision;
+	}
+
+	public void setFechaEmision(LocalDate fechaEmision) {
+		this.fechaEmision = fechaEmision;
+	}
+
+	public LocalDate getFechaVencimiento() {
+		return fechaVencimiento;
+	}
+
+	public void setFechaVencimiento(LocalDate fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
+
+	public Double getLimiteCredito() {
+		return limiteCredito;
+	}
+
+	public void setLimiteCredito(Double limiteCredito) {
+		this.limiteCredito = limiteCredito;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	};
+	
+	
+	
+	
+
+}

@@ -1,0 +1,5 @@
+package com.banco.clientes.controller;
+
+public class ClientController {
+
+}
