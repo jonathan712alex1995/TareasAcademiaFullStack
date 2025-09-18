@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClientService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">clientes-crud</a> &gt; <a href="index.source.html" class="el_package">com.banco.clientes.service</a> &gt; <span class="el_source">ClientService.java</span></div><h1>ClientService.java</h1><pre class="source lang-java linenums">package com.banco.clientes.service;
+
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.banco.clientes.model.Client;
+import com.banco.clientes.repository.ClientRepository;
+
+@Service
+<span class="nc" id="L11">public class ClientService {</span>
+
+    @Autowired
+    private ClientRepository clientRepository;
+
+    //metodos CRUD
+    //AGREGAR
+    public Client addNewClient(Client client) {
+<span class="nc" id="L19">        return clientRepository.save(client);</span>
+    }
+
+    //LISTAR
+    public List&lt;Client&gt; showAllClients() {
+<span class="nc" id="L24">        return clientRepository.findAll();</span>
+    }
+
+    public Optional&lt;Client&gt; findClientById(String id) {
+<span class="nc" id="L28">        return clientRepository.findById(id);</span>
+    }
+
+    public Optional&lt;Client&gt; findClientByEmail(String email) {
+<span class="nc" id="L32">        return clientRepository.findByEmail(email);</span>
+    }
+
+    public Optional&lt;Client&gt; findClientByPhone(String phone) {
+<span class="nc" id="L36">        return clientRepository.findByPhone(phone);</span>
+    }
+
+    public Optional&lt;Client&gt; findClientByCellphone(String cellphone) {
+<span class="nc" id="L40">        return clientRepository.findByCellphone(cellphone);</span>
+    }
+
+    //ACTUALIZAR
+    public Client updateClient(String id, Client updatedClient) {
+<span class="nc" id="L45">        Optional&lt;Client&gt; existClient = clientRepository.findById(id);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        if(existClient.isPresent()) {</span>
+<span class="nc" id="L47">            Client client = existClient.get();</span>
+<span class="nc" id="L48">            client.setName(updatedClient.getName());</span>
+<span class="nc" id="L49">            client.setGender(updatedClient.getGender());</span>
+<span class="nc" id="L50">            client.setNationality(updatedClient.getNationality());</span>
+<span class="nc" id="L51">            client.setBirthDate(updatedClient.getBirthDate());</span>
+<span class="nc" id="L52">            client.setAddress(updatedClient.getAddress());</span>
+<span class="nc" id="L53">            client.setCity(updatedClient.getCity());</span>
+<span class="nc" id="L54">            client.setPostalCode(updatedClient.getPostalCode());</span>
+<span class="nc" id="L55">            client.setCountry(updatedClient.getCountry());</span>
+<span class="nc" id="L56">            client.setPhone(updatedClient.getPhone());</span>
+<span class="nc" id="L57">            client.setCellphone(updatedClient.getCellphone());</span>
+<span class="nc" id="L58">            client.setEmail(updatedClient.getEmail());</span>
+<span class="nc" id="L59">            return clientRepository.save(client);</span>
+        }
+<span class="nc" id="L61">        return null;</span>
+    }
+
+    public boolean deleteClientById(String id) {
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        if(clientRepository.existsById(id)) {</span>
+<span class="nc" id="L66">            clientRepository.deleteById(id);</span>
+<span class="nc" id="L67">            return true;</span>
+        }
+<span class="nc" id="L69">        return false;</span>
+    }
+
+    public void deleteAllClients() {
+<span class="nc" id="L73">        clientRepository.deleteAll();</span>
+<span class="nc" id="L74">    }</span>
+
+    public long countClients() {
+<span class="nc" id="L77">        return clientRepository.count();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

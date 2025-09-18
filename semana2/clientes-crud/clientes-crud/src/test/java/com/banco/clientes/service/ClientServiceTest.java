@@ -1,4 +1,4 @@
-package com.banco.clientes;
+package com.banco.clientes.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
