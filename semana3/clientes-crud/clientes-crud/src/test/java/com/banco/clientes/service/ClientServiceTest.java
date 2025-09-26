@@ -25,7 +25,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.banco.clientes.model.Client;
 import com.banco.clientes.repository.ClientRepository;
-import com.banco.clientes.service.ClientService;
+
 
 @ExtendWith(MockitoExtension.class)
 public class ClientServiceTest {
