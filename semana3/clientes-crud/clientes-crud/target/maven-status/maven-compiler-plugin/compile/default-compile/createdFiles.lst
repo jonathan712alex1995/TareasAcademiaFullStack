@@ -1,0 +1,9 @@
+com\banco\clientes\controller\CardController.class
+com\banco\clientes\model\Client.class
+com\banco\clientes\service\CardService.class
+com\banco\clientes\repository\CardRepository.class
+com\banco\clientes\service\ClientService.class
+com\banco\clientes\ClientesCrudApplication.class
+com\banco\clientes\controller\ClientController.class
+com\banco\clientes\model\Card.class
+com\banco\clientes\repository\ClientRepository.class

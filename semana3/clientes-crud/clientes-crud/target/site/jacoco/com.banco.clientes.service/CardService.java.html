@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CardService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">clientes-crud</a> &gt; <a href="index.source.html" class="el_package">com.banco.clientes.service</a> &gt; <span class="el_source">CardService.java</span></div><h1>CardService.java</h1><pre class="source lang-java linenums">package com.banco.clientes.service;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.banco.clientes.model.Card;
+import com.banco.clientes.repository.CardRepository;
+
+@Service
+<span class="nc" id="L14">public class CardService {</span>
+
+<span class="nc" id="L16">	List&lt;String&gt; validStatusCard = Arrays.asList(&quot;activa&quot;, &quot;suspendida&quot;, &quot;cancelada&quot;);</span>
+	@Autowired
+	private CardRepository cardRepository;
+	
+	//metodos CRUD
+	public Card addNewCard(Card card) {
+<span class="nc" id="L22">		return cardRepository.save(card);</span>
+	}
+	
+	public List&lt;Card&gt; showAllCards(){
+<span class="nc" id="L26">		return cardRepository.findAll();</span>
+	}
+	
+	public Optional&lt;Card&gt; findCardById(String id){
+<span class="nc" id="L30">		return cardRepository.findById(id);</span>
+	}
+	
+	public List&lt;Card&gt; findCardsByClientId(String clientId){
+<span class="nc" id="L34">		return cardRepository.findByClientId(clientId);</span>
+	}
+	
+	public List&lt;Card&gt; findCardsByType(String type){
+<span class="nc" id="L38">		return cardRepository.findByType(type);</span>
+	}
+	
+	public List&lt;Card&gt; findCardsByStatus(String status){
+<span class="nc" id="L42">		return cardRepository.findByStatus(status);</span>
+	}
+	
+	//UPDATE
+	public Card updateCard(String id, Card updatedCard) {
+<span class="nc" id="L47">		Optional&lt;Card&gt; existCard = cardRepository.findById(id);</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">		if(existCard.isPresent()) {</span>
+<span class="nc" id="L49">			Card card = existCard.get();</span>
+<span class="nc" id="L50">			card.setCardNumber(updatedCard.getCardNumber());</span>
+<span class="nc" id="L51">			card.setCreditLimit(updatedCard.getCreditLimit());</span>
+<span class="nc" id="L52">			card.setExpirationDate(updatedCard.getExpirationDate());</span>
+<span class="nc" id="L53">			card.setIssueDate(updatedCard.getIssueDate());</span>
+<span class="nc" id="L54">			card.setId(updatedCard.getId());</span>
+<span class="nc" id="L55">			card.setStatus(updatedCard.getStatus());</span>
+<span class="nc" id="L56">			card.setType(updatedCard.getType());</span>
+<span class="nc" id="L57">			return cardRepository.save(card);</span>
+		}
+<span class="nc" id="L59">		return null;</span>
+	}
+	
+	public boolean disableClientCard(String cardId , String status) {
+<span class="nc bnc" id="L63" title="All 2 branches missed.">		if(validStatusCard.contains(status)) {</span>
+<span class="nc" id="L64">			Optional&lt;Card&gt; existCard = cardRepository.findById(cardId);</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">			if(existCard.isPresent()) {</span>
+<span class="nc" id="L66">				Card card = existCard.get();</span>
+<span class="nc" id="L67">				card.setStatus(status);</span>
+<span class="nc" id="L68">				cardRepository.save(card);</span>
+<span class="nc" id="L69">				return true;</span>
+			}
+		}
+		
+<span class="nc" id="L73">		return false;</span>
+	}
+	
+	//DELETE
+	public boolean deleteCardById(String id) {
+<span class="nc bnc" id="L78" title="All 2 branches missed.">		if(cardRepository.existsById(id)) {</span>
+<span class="nc" id="L79">			cardRepository.deleteById(id);</span>
+<span class="nc" id="L80">			return true;</span>
+		}
+<span class="nc" id="L82">		return false;</span>
+	}
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
