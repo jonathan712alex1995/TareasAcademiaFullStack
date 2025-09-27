@@ -38,12 +38,12 @@ public class CardServiceTest {
 	private Card testCard,testCard2,testCard3,testCard4;
 	
 	@BeforeEach
-	void initCard() {
+	void initCard() { 
 		testCard = new Card("112233","123","1111-2222-3333-4444","credito",LocalDate.of(2025, 1, 1),
 				                 LocalDate.of(2026, 1, 1),5000.0,"activa");
 		
 		testCard2 = new Card("445566","123","5555-6666-7777-8888","debito",LocalDate.of(2025, 1, 1),
-								  LocalDate.of(2026, 1, 1),null,"activa" );
+								  LocalDate.of(2026, 1, 1),null,"activa" ); 
 		testCard3 = new Card("778899","123","9999-1010-1111-1212","debito",LocalDate.of(2025, 1, 1),
 				                  LocalDate.of(2026, 1, 1),null,"activa" );
 

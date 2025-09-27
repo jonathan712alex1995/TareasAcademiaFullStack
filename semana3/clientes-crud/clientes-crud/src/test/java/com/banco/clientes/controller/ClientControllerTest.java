@@ -120,7 +120,7 @@ public class ClientControllerTest {
     			.andExpect(jsonPath("$.name", is("Jonathan Pulido")))
     			.andExpect(jsonPath("$.email", is("jonathan.pulido@example.com")));
     			
-    }
+    }  
     
     @Test
     void testDeleteClient() throws Exception {

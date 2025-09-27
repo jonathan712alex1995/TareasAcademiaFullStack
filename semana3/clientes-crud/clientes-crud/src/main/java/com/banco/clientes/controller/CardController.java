@@ -14,7 +14,7 @@ import com.banco.clientes.service.CardService;
 @RestController
 @RequestMapping("/api/cards")
 @CrossOrigin(origins = "*")
-public class CardController {
+public class CardController { 
 
     @Autowired
     private CardService cardService;
