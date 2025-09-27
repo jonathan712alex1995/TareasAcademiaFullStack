@@ -73,7 +73,7 @@ public class ClientControllerTest {
     } 
     
     @Test
-    void testGetClientById() throws Exception {
+    void testGetClientById() throws Exception { 
     	
     	when(clientService.findClientById("456")).thenReturn(Optional.of(testClient));
     	

@@ -33,7 +33,7 @@ public class CardController {
         if (card.isPresent()) {
             return ResponseEntity.ok(card.get());
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.notFound().build(); 
     }
 
     // Crear nueva tarjeta

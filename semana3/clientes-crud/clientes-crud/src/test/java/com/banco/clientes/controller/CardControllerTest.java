@@ -8,7 +8,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -20,10 +19,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.banco.clientes.model.Card;
 import com.banco.clientes.service.CardService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest(CardController.class)
@@ -76,6 +77,45 @@ public class CardControllerTest {
 		.andExpect(content().contentType("application/json"))
 		.andExpect(jsonPath("$.id" , is("112233")))
 		.andExpect(jsonPath("$.cardNumber" , is("1111-2222-3333-4444")));
+	}
+	
+	@Test
+	void testCreateCard() throws JsonProcessingException, Exception {
+		when(cardService.addNewCard(any(Card.class))).thenReturn(testCard);
+		
+		mockMvc.perform(post("/api/cards")
+				.contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(testCard)))
+				.andExpect(status().isCreated())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(jsonPath("$.id" , is("112233")))
+				.andExpect(jsonPath("$.cardNumber" , is("1111-2222-3333-4444")));
+				
+	}
+	
+	@Test
+	void testUpdatedCard() throws JsonProcessingException, Exception {
+		Card updatedCard = new Card ("112233","123","0000-0000-0000-0000","credito",LocalDate.of(2025, 1, 1),
+    			LocalDate.of(2026, 1, 1),5000.0,"activa");
+		
+		when(cardService.updateCard(eq("112233"), any(Card.class))).thenReturn(updatedCard);
+		
+		mockMvc.perform(put("/api/cards/{id}" , "112233")
+				.contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(updatedCard)))
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(jsonPath("$.id" , is("112233")))
+				.andExpect(jsonPath("$.cardNumber" , is("0000-0000-0000-0000")));
+		
+	}
+	
+	@Test
+	void testDeleteCard() throws Exception {
+		when(cardService.deleteCardById(eq("112233"))).thenReturn(true);
+		
+		mockMvc.perform(delete("/api/cards/{id}" , "112233"))
+		.andExpect(status().isNoContent());	
 	}
 	
 	
