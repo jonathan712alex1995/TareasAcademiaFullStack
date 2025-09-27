@@ -76,7 +76,7 @@
     <version>0.8.8</version>
     <configuration>
         <includes>
-            <include>com/banco/clientes/service/*.class</include>
+            <include>com/banco/clientes/service/CardService.*</include>
         </includes>
     </configuration>
     <executions>

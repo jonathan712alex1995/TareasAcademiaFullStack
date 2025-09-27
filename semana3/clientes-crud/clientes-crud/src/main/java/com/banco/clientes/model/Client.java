@@ -27,7 +27,7 @@ public class Client {
     // Constructors
     public Client() {}
 
-    public Client(String id, String name, char gender, String nationality, 
+    public Client(String id, String name, char gender, String nationality,  
                   LocalDate birthDate, String address, String city, String postalCode, 
                   String country, String phone, String cellphone, String email) {
         this.id = id;

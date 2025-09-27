@@ -59,7 +59,7 @@ public class CardService {
 		return null;
 	}
 	
-	public boolean disableClientCard(String cardId , String status) {
+	/*public boolean disableClientCard(String cardId , String status) {
 		if(validStatusCard.contains(status)) {
 			Optional<Card> existCard = cardRepository.findById(cardId);
 			if(existCard.isPresent()) {
@@ -71,7 +71,7 @@ public class CardService {
 		}
 		
 		return false;
-	}
+	}*/
 	
 	//DELETE
 	public boolean deleteCardById(String id) {

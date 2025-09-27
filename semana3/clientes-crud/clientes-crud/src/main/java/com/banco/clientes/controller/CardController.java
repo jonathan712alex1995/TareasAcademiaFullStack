@@ -75,12 +75,12 @@ public class CardController {
     }
 
     //Cambiar estado de tarjeta
-    @PutMapping("/{id}/status")
+   /* @PutMapping("/{id}/status")
     public ResponseEntity<String> changeCardStatus(@PathVariable String id, @RequestBody String status) {
         boolean updated = cardService.disableClientCard(id, status.replace("\"", ""));
         if (updated) {
             return ResponseEntity.ok("Estado actualizado correctamente");
         }
         return ResponseEntity.badRequest().body("Error al actualizar estado o tarjeta no encontrada"+id+"---"+status);
-    }
+    }*/
 }

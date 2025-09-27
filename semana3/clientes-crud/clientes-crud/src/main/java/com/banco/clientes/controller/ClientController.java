@@ -27,7 +27,7 @@ public class ClientController {
     }
 
     //Obtener cliente por ID
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") 
     public ResponseEntity<Client> getClientById(@PathVariable String id) {
         Optional<Client> client = clientService.findClientById(id);
         if (client.isPresent()) {
