@@ -1,5 +1,13 @@
 package com.banco.turnmanagement.events;
 
-public class TurnCreated {
+import java.time.LocalDateTime;
 
-}
+public record TurnCreated(
+
+		Long turnId,
+		Long customerId,
+		String turnNumber,
+		String serviceType,
+		LocalDateTime createdAt
+		
+){}

@@ -1,5 +1,7 @@
 package com.banco.turnmanagement.events;
 
-public class CashierAvailable {
-
-}
+public record CashierAvailable(
+	    Long cashierId,
+	    String cashierName,
+	    String serviceType
+	) {}

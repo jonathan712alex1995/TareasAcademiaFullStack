@@ -1,5 +1,10 @@
 package com.banco.turnmanagement.events;
 
-public class TurnCompleted {
+import java.time.LocalDateTime;
 
-}
+public record TurnCompleted(
+    Long turnId,
+    String turnNumber,
+    Long cashierId,
+    LocalDateTime completedAt
+) {}
