@@ -17,7 +17,7 @@ public class CustomerService {
         
         Customer customer = new Customer();
         customer.setDocument(document);
-        customer.setFullName(fullName);
+        customer.setFullname(fullName);
         
         return customerRepository.save(customer);
     }

@@ -3,7 +3,9 @@ package com.banco.turnmanagement.customers;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "customers")
@@ -21,4 +23,5 @@ public class Customer {
 	
 	@Column(nullable=false)
 	private String fullname;
-}
+	
+	}
