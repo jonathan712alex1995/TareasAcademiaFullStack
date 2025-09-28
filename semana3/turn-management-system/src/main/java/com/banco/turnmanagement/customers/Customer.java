@@ -1,17 +1,10 @@
 package com.banco.turnmanagement.customers;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
 @Table(name = "customers")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Customer {
 
 	@Id
@@ -23,5 +16,76 @@ public class Customer {
 	
 	@Column(nullable=false)
 	private String fullname;
+
+	
+	
+	
+	public Customer() {
+		
+	}
+
+
+
+
+	public Customer(long id, String document, String fullname) {
+		super();
+		this.id = id;
+		this.document = document;
+		this.fullname = fullname;
+	}
+
+
+
+
+	public long getId() {
+		return id;
+	}
+
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+
+	public String getDocument() {
+		return document;
+	}
+
+
+
+
+	public void setDocument(String document) {
+		this.document = document;
+	}
+
+
+
+
+	public String getFullname() {
+		return fullname;
+	}
+
+
+
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
+
+
+
+
+	
+
+
+
+
+	
+	
+	
 	
 	}

@@ -1,6 +1,8 @@
 package com.banco.turnmanagement.services;
 
 import com.banco.turnmanagement.events.CashierAvailable;
+import com.banco.turnmanagement.services.Cashier.CashierStatus;
+import static com.banco.turnmanagement.services.Cashier.CashierStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
@@ -35,12 +37,12 @@ public class CashierService {
         return cashierRepository.findByServiceTypeAndStatus(serviceType, Cashier.CashierStatus.DISPONIBLE);
     }
     
-    public Cashier updateCashierStatus(Long cashierId, Cashier.CashierStatus newStatus) {
+    public Cashier updateCashierStatus(Long cashierId, CashierStatus newStatus) {
         Cashier cashier = cashierRepository.findById(cashierId)
             .orElseThrow(() -> new IllegalArgumentException("Cashier not found"));
         
-        Cashier.CashierStatus oldStatus = cashier.getStatus();
-        cashier.setStatus(newStatus);
+        Cashier.CashierStatus oldStatus = cashier.getCashierStatus();
+        cashier.setCashierStatus(newStatus);
         
         Cashier savedCashier = cashierRepository.save(cashier);
         

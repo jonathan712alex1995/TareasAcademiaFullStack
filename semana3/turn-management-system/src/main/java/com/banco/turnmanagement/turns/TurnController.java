@@ -25,6 +25,7 @@ public class TurnController {
             Customer customer = customerService.getOrCreateCustomer(
                 request.getCustomerDocument(), 
                 request.getCustomerName()
+                
             );
             
             // Crear turno
@@ -33,7 +34,7 @@ public class TurnController {
             TurnResponse response = new TurnResponse(
                 turn.getId(),
                 turn.getTurnNumber(),
-                customer.getFullName(),
+                customer.getFullname(),
                 turn.getServiceType().toString(),
                 turn.getStatus().toString(),
                 turn.getCreatedAt().toString()
