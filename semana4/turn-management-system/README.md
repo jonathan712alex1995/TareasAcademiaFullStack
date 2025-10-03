@@ -27,22 +27,30 @@ Sistema modular para gestionar turnos de clientes en sucursales bancarias, utili
   * Mantener cola de espera por servicio
   * Llamar siguiente turno disponible
   * Completar atención de turno
-  * Estados: ESPERA, LLAMADO, ATENDIENDO, COMPLETADO, CANCELADO
+  * Estados: WAITING, CALLED, IN_PROGRESS, COMPLETED, CANCELLED
 
 #### 3.3 Módulo `services`
 * **Responsabilidad:** Gestión de cajeros y servicios bancarios
 * **Funcionalidades:**
   * CRUD de cajeros (nombre, tipo de servicio)
-  * Control de estado de cajeros (DISPONIBLE, OCUPADO, DESCANSO)
+  * Control de estado de cajeros (AVAILABLE, BUSY, ON_BREAK)
   * Servicios disponibles (CAJA, EJECUTIVO)
   * Consulta de cajeros por disponibilidad
 
 #### 3.4 Módulo `listeners`
 * **Responsabilidad:** Procesamiento de eventos del sistema
 * **Componentes:**
-  * **NotificationEventListener:** Notificaciones simuladas
+  * **NotificationEventListener:** Notificaciones SMS/Email simuladas
   * **QueueDisplayEventListener:** Actualización de pantallas de sucursal
   * **AuditEventListener:** Registros de auditoría y métricas
+
+### 3.5 Módulo `batch`
+* **Responsabilidad:** Procesamiento por lotes y tareas programadas
+* **Componentes:**
+  * **CleanupTasklet:** Limpieza automática de turnos antiguos
+  * **BatchScheduler:** Programación de trabajos batch
+  * **CleanupJobConfig:** Configuración del job de limpieza
+  * **BatchController:** API REST para ejecución manual de jobs
 
 ### 4. Eventos del Sistema
 * `TurnCreated` - Turno generado para cliente
@@ -69,6 +77,9 @@ Sistema modular para gestionar turnos de clientes en sucursales bancarias, utili
   GET    /cashiers/available - Cajeros disponibles
   PUT    /cashiers/{id}/status - Cambiar estado cajero
   GET    /cashiers/{id} - Obtener cajero específico
+
+/api/batch
+  POST   /run-cleanup - Ejecutar limpieza manual de datos antiguos
 ```
 
 ### 6. Modelo de Datos Final
@@ -78,17 +89,19 @@ Sistema modular para gestionar turnos de clientes en sucursales bancarias, utili
 
 **Turn:** 
 - id (Long), customerId (Long), serviceType (CAJA/EJECUTIVO), turnNumber (String), 
-- status (ESPERA/LLAMADO/ATENDIENDO/COMPLETADO/CANCELADO), createdAt (DateTime), calledAt (DateTime)
+- status (WAITING/CALLED/IN_PROGRESS/COMPLETED/CANCELLED), createdAt (DateTime), calledAt (DateTime)
 
 **Cashier:** 
-- id (Long), name (String), serviceType (CAJA/EJECUTIVO), status (DISPONIBLE/OCUPADO/DESCANSO)
+- id (Long), name (String), serviceType (CAJA/EJECUTIVO), status (AVAILABLE/BUSY/ON_BREAK)
 
 ### 7. Stack Tecnológico Implementado
 * **Backend:** Spring Boot 3.4+, Spring Modulith 1.2+, Java 21
+* **Batch Processing:** Spring Batch 5.0+ con scheduling
 * **Base de Datos:** H2 (en memoria para desarrollo)
 * **ORM:** JPA/Hibernate con generación automática de esquema
 * **Logging:** SLF4J con formato estructurado
 * **Eventos:** Spring Application Events
+* **Testing:** JUnit 5, Mockito, MockMvc
 * **Build:** Maven
 
 ### 8. Arquitectura de Eventos
@@ -116,11 +129,15 @@ Sistema modular para gestionar turnos de clientes en sucursales bancarias, utili
 * **Concurrencia:** Estructuras thread-safe para colas y estados
 * **Métricas:** Base para integración con sistemas de monitoreo
 * **API RESTful:** Documentación implícita con naming conventions
+* **Batch Processing:** Limpieza automática de datos antiguos
+* **Scheduled Jobs:** Ejecución programada diaria a las 2:00 AM
+* **Manual Triggers:** API REST para ejecutar jobs bajo demanda
+* **Testing:** Cobertura de tests +70% en código principal
 
 ### 11. Funcionalidades de los Listeners
 
 #### NotificationEventListener
-* Simulación al crear turnos
+* Simulación de SMS/Email al crear turnos
 * Notificaciones cuando turno es llamado
 * Encuestas post-atención
 * Alertas al sistema de gestión
@@ -137,20 +154,53 @@ Sistema modular para gestionar turnos de clientes en sucursales bancarias, utili
 * Trazabilidad por actor (sistema/cajero)
 * Base para reportes gerenciales
 
+### 12. Funcionalidades del Módulo Batch
+
+#### CleanupTasklet
+* **Propósito:** Eliminar turnos completados antiguos
+* **Criterio:** Turnos con más de 30 días de antigüedad
+* **Ejecución:** Automática diaria a las 2:00 AM
+* **Manual:** Disponible vía API REST `/api/batch/run-cleanup`
+* **Logging:** Registra cantidad de turnos eliminados
+* **Métricas:** Incrementa contadores de items procesados
+
+#### Configuración del Job
+* **Job Name:** cleanupJob
+* **Step:** cleanupOldTurnsStep
+* **Transaction Manager:** Integrado con JPA
+* **Rollback:** Automático en caso de error
+* **Status Tracking:** Estado persistido en tablas Spring Batch
+
+#### BatchScheduler
+* **Frecuencia:** Diaria a las 2:00 AM (configurable vía cron)
+* **Job Launcher:** Ejecución con parámetros únicos (timestamp)
+* **Error Handling:** Logs estructurados de errores
+* **Retry Logic:** Basado en configuración de Spring Batch
+
 ### 12. Validaciones y Reglas de Negocio
 * **Clientes únicos:** Documento no duplicado
 * **Turnos únicos:** Numeración automática con timestamp
 * **Estados coherentes:** Transiciones válidas de estados
 * **Servicios válidos:** Solo CAJA y EJECUTIVO permitidos
 
-### 13. Criterios de Aceptación Cumplidos
-*Arquitectura modular con Spring Modulith  
-*Comunicación por eventos entre módulos  
-*APIs REST funcionales y probadas  
-*Base de datos con esquema automático  
-*Manejo de errores consistente  
-*Logging estructurado para auditoría  
-*Separación clara de responsabilidades  
-*Eventos procesados por múltiples listeners  
-*Estados de turno y cajero bien definidos  
-*Numeración automática de turnos
+### 13. Próximos Pasos (Extensiones Futuras)
+* Base de datos persistente (MySQL/PostgreSQL)
+* Interfaz web para cajeros y supervisores
+* API de reportes y estadísticas
+* Notificaciones push reales
+* Integración con sistemas bancarios existentes
+* Priorización de clientes VIP
+* Estimación de tiempos de espera
+* Dashboard en tiempo real
+
+### 14. Criterios de Aceptación Cumplidos
+Arquitectura modular con Spring Modulith  
+Comunicación por eventos entre módulos  
+APIs REST funcionales y probadas  
+Base de datos con esquema automático  
+Manejo de errores consistente  
+Logging estructurado para auditoría  
+Separación clara de responsabilidades  
+Eventos procesados por múltiples listeners  
+Estados de turno y cajero bien definidos  
+Numeración automática de turnos
