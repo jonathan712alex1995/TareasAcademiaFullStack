@@ -2,7 +2,7 @@
 # Sistema de Gestión de Turnos Bancarios
 
 ### 1. Visión del Producto
-Sistema modular para gestionar turnos de clientes en sucursales bancarias, utilizando arquitectura basada en eventos con Spring Boot + Spring Modulith.
+Sistema modular   para gestionar turnos de clientes en sucursales bancarias, utilizando arquitectura basada en eventos con Spring Boot + Spring Modulith.
 
 ### 2. Objetivos
 * Generar turnos para clientes de forma ordenada
