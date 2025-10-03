@@ -106,7 +106,7 @@ class CashierServiceTest {
         assertNotNull(resultado);
         assertEquals(Cashier.CashierStatus.DESCANSO, resultado.getCashierStatus());
         verify(cashierRepository, times(1)).save(any(Cashier.class));
-        verify(eventPublisher, never()).publishEvent(any()); // No evento porque no se volvió AVAILABLE
+        verify(eventPublisher, never()).publishEvent(any());  // No evento porque no se volvió AVAILABLE
     }
     
     @Test
